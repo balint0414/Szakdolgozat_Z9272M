@@ -4,5 +4,10 @@
 \select@language {magyar} \contentsline {section}{\numberline {1.2}Piackutatás}{4}{section.1.2}%
 \select@language {magyar} \contentsline {chapter}{\numberline {2}Felhasznált technológiák}{5}{chapter.2}%
 \select@language {magyar} \contentsline {section}{\numberline {2.1}Szakasz címe}{5}{section.2.1}%
-\select@language {magyar} \contentsline {chapter}{Összegzés}{6}{chapter*.2}%
-\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{7}{chapter*.3}%
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Felhasználói körök}{6}{chapter.3}%
+\select@language {magyar} \contentsline {section}{\numberline {3.1}Engedélyek/felület a látogatóknak, akik még nem regisztráltak}{6}{section.3.1}%
+\select@language {magyar} \contentsline {section}{\numberline {3.2}Engedélyek/felület a regisztrált felhasználók számára}{6}{section.3.2}%
+\select@language {magyar} \contentsline {section}{\numberline {3.3}Engedélyek/felület, edzők számára}{7}{section.3.3}%
+\select@language {magyar} \contentsline {section}{\numberline {3.4}Engedélyek/felület, adminisztrátor}{7}{section.3.4}%
+\select@language {magyar} \contentsline {chapter}{Összegzés}{8}{chapter*.2}%
+\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{9}{chapter*.3}%

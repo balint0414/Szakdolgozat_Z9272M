@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.1)  13 JAN 2023 20:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.1)  16 JAN 2023 18:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -621,7 +621,7 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 LaTeX Info: Redefining \cal on input line 577.
 LaTeX Info: Redefining \mit on input line 578.
 )
-<eszterhazy-logo-hu.pdf, id=44, 256.07971pt x 88.04292pt>
+<eszterhazy-logo-hu.pdf, id=60, 256.07971pt x 88.04292pt>
 File: eszterhazy-logo-hu.pdf Graphic file (type pdf)
 <use eszterhazy-logo-hu.pdf>
 Package pdftex.def Info: eszterhazy-logo-hu.pdf  used on input line 25.
@@ -645,44 +645,48 @@ ogramok/texlive/2022/texmf-dist/tex/latex/thesis-ekf/eszterhazy-logo-hu.pdf>]
 2. fejezet.
 [5
 
-] [6
+]
+3. fejezet.
 
-] [7
+Overfull \hbox (9.40671pt too wide) in paragraph at lines 54--54
+[]\T1/lmr/bx/n/17.28 Engedélyek/felület a lá-to-ga-tók-nak, akik még nem
+ []
+
+
+Overfull \hbox (5.08882pt too wide) in paragraph at lines 57--57
+[]\T1/lmr/bx/n/17.28 Engedélyek/felület a re-giszt-rált fel-hasz-ná-lók szá-
+ []
+
+[6
+
+] [7] [8
+
+] [9
 
 ] (./szakdolgozat.aux)
-
-Package rerunfilecheck Warning: File `szakdolgozat.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `szakdolgozat.out':
-(rerunfilecheck)             Before: 8926B6E326BD095284FE9A4579DDBD77;1261
-(rerunfilecheck)             After:  5D81181A46340A4D2E2AD964BA0D601D;1086.
+Package rerunfilecheck Info: File `szakdolgozat.out' has not changed.
+(rerunfilecheck)             Checksum: FAFD4F41BFE46D0E32971661F0E66BEA;2591.
  ) 
 Here is how much of TeX's memory you used:
- 14975 strings out of 475071
- 243374 string characters out of 5777918
- 610089 words of memory out of 5000000
- 36056 multiletter control sequences out of 15000+600000
+ 14985 strings out of 475071
+ 243468 string characters out of 5777918
+ 611089 words of memory out of 5000000
+ 36060 multiletter control sequences out of 15000+600000
  542063 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,81p,686b,505s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{subsection.2.1.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-{d:/programok/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<d:/programo
-k/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><d:/programok/texliv
-e/2022/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><d:/programok/texlive/2022/
-texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/programok/texlive/2022/texmf-dis
-t/fonts/type1/public/lm/lmr12.pfb><d:/programok/texlive/2022/texmf-dist/fonts/t
-ype1/public/lm/lmr7.pfb><d:/programok/texlive/2022/texmf-dist/fonts/type1/publi
-c/lm/lmr8.pfb><d:/programok/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri1
-2.pfb>
-Output written on szakdolgozat.pdf (7 pages, 186186 bytes).
+ 75i,7n,81p,1023b,505s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{d:/programok/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<d:/progra
+mok/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><d:/programok/texl
+ive/2022/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><d:/programok/texlive/202
+2/texmf-dist/fonts/type1/public/lm/lmr10.pfb><d:/programok/texlive/2022/texmf-d
+ist/fonts/type1/public/lm/lmr12.pfb><d:/programok/texlive/2022/texmf-dist/fonts
+/type1/public/lm/lmr7.pfb><d:/programok/texlive/2022/texmf-dist/fonts/type1/pub
+lic/lm/lmr8.pfb><d:/programok/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr
+i12.pfb>
+Output written on szakdolgozat.pdf (9 pages, 191913 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 19 named destinations out of 1000 (max. 500000)
- 98 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 162 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
+ 130 words of extra memory for PDF output out of 10000 (max. 10000000)
 
