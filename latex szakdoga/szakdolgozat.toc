@@ -1,0 +1,8 @@
+\select@language {magyar} \contentsline {chapter}{\numberline {1}Bevezetés}{3}{chapter.1}%
+\select@language {magyar} \contentsline {chapter}{Bevezetés}{3}{chapter.1}%
+\select@language {magyar} \contentsline {section}{\numberline {1.1}Szakdolgozatom célja}{3}{section.1.1}%
+\select@language {magyar} \contentsline {section}{\numberline {1.2}Piackutatás}{4}{section.1.2}%
+\select@language {magyar} \contentsline {chapter}{\numberline {2}Felhasznált technológiák}{5}{chapter.2}%
+\select@language {magyar} \contentsline {section}{\numberline {2.1}Szakasz címe}{5}{section.2.1}%
+\select@language {magyar} \contentsline {chapter}{Összegzés}{6}{chapter*.2}%
+\select@language {magyar} \contentsline {chapter}{Irodalomjegyz\'ek}{7}{chapter*.3}%

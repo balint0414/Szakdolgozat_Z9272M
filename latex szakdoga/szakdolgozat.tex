@@ -1,0 +1,67 @@
+\documentclass[
+% opciók nélkül: egyoldalas nyomtatás, elektronikus verzió
+% twoside,     % kétoldalas nyomtatás
+% tocnopagenum,% oldalszámozás a tartalomjegyzék után kezdődik
+]{thesis-ekf}
+\usepackage[T1]{fontenc}
+\PassOptionsToPackage{defaults=hu-min}{magyar.ldf}
+\usepackage[magyar]{babel}
+\usepackage{mathtools,amssymb,amsthm,pdfpages}
+\footnotestyle{rule=fourth}
+
+\newtheorem{tetel}{Tétel}[chapter]
+\theoremstyle{definition}
+\newtheorem{definicio}[tetel]{Definíció}
+\theoremstyle{remark}
+\newtheorem{megjegyzes}[tetel]{Megjegyzés}
+
+\begin{document}
+		\institute{Matematikai és Informatikai Intézet}
+	\title{Alkalmazásfejlesztés WEB alapokon}
+	\author{Géczi Bálint\\Programtervező informatikus}
+	\supervisor{Balla Tamás\\tanársegéd}
+	\city{Eger}
+	\date{2023}
+	\maketitle
+	\tableofcontents
+	
+	\chapter{Bevezetés}
+	\addcontentsline{toc}{chapter}{Bevezetés}
+	Napjainkban az internet használatának elterjedésével bővültek a lehetőségeink minden szempont tekintetében. A világháló számos lehetőséget ad számunkra csekkek feladatásától kezdve az online rendelésekig vagy akár új emberek megismerését is sokkal inkább könnyebbé váltak mint az internet előtti időkben. 
+	
+	Előnyként sorolandó a mai világban az is, hogy szinte mindenkinek van internetelérése alkalmazható eszköze és ezáltal az előnyök élvezete is elérhető mindenki számára. Az informatikai cikkek térhódítása nem csak a kompjúterekre vonatkozik hanem más elektronikai eszközeinkre is mint mobiltelefonunkra és egyéb internetelérést biztosított eszközeinkre. Nem feltétlen szükséges ilyen eszközök birtokban sem lennünk hiszen netkávézókban, könyvtárakban is biztosítva van erre számos lehetőségünk.
+	
+	Az átlag emberek felhasználói felületeinek bővülése mellett a fejlesztőknek is rengeteg újdonsággal bővült fejlesztést segítő programjainak palletája. Fejlődött a webdizájn is és ennek következtében az oldalak is egyre felhasználóbarátabbá váltak.
+	
+	Kezdetben az weboldalak, webalkalmazások fejlesztése HTML, CSS és Javascript webfejlesztési technikákból álltak azóta ezeknek a technológiáknak a körei is jócskán bővültek mint például CSS3, WebGL, HTML 5, Java, React JS, Angular JS, PHP. A szakdolgozatom során a Laravel által biztosított fejlesztői környezetet fogom használni.
+	
+	\section{Szakdolgozatom célja}
+	A weboldal célja, hogy a látogató könnyen tudjon magának személyi edzőt keresni és ezáltal a fejlődése egy újabb szintre léphet mind a helyes táplálkozás, mind az edzés terén. Az oldal biztosítja azt a felületet, ahol az edzők, akik felregisztrálják magukat az oldalra és ott megtalálhatók lesznek. A regisztráció persze nem csak az edzők számára elérhető, hanem azok számára is akik éppen pont egy edzőt vagy egy edzőtársat keresnek maguk mellé. A fő oldalon belépés előtt elérhető számos cikk az egészséges táplálkozással kapcsolatban illetve a helyes edzés kivitelezésével kapcsolatban is.
+	
+	Fontosnak tartottam mindig is az egészséges életvitelt és ez az oldal hozzájuthat ahhoz, hogy azok akik éppen elakarják kezdeni a sportot legyen egy alapjuk mind tudás szinten vagy akár edzőtárs szempontjából is. Azonban azok számára is kiváló az oldal akik nem kezdő szinten állnak mert mindenki számára pozitív hatásai lehetnek az oldal igénybevétele után.
+	
+	Az oldal megvalósításának célja mind az embereknek való segítség a témához kapcsolódóan és emellett képességeim fejlesztése a webfejlesztés terén.
+	
+	\section{Piackutatás}
+	Mielőtt nekiálltam a szakdolgozatom elkészítésének piackutatást\footnote{Egy olyan közgazdaságtani vizsgálat, amely egy-egy konkrét üzleti cél érdekében végez adatgyűjtést illetve elemzést.} végeztem azzal kapcsolatban, hogy létezik e már ilyen weboldal és ha igen ők mit kínálnak. Az eredménye a piackutatásnak végül az lett, hogy létezik már ilyen weboldal de nem sok ember használja és kevésbé ismert, emellett funkcióiban eltérő az én projektemhez viszonyítva.
+	
+	Az oldal tehát számos új funkciókkal fogja használóit ellátni, amit még eddig más weboldalakon nem tapasztalhattak meg.
+	
+	\chapter{Felhasznált technológiák}
+	\section{Szakasz címe}
+	
+
+	
+	\chapter*{Összegzés}
+	\addcontentsline{toc}{chapter}{Összegzés}
+	Még nincsen.
+	
+	\begin{thebibliography}{2}
+		\addcontentsline{toc}{chapter}{\bibname}
+		\bibitem{pelda}
+		\textsc{Pelda István}: \emph{Peldaoldal}, Debreceni Egyetem, Debrecen, 2004.
+	\end{thebibliography}
+	
+	% Aláírt, szkennelt nyilatkozat beillesztése a szakdolgozat végére
+	% \includepdf{nyilatkozat.pdf}
+\end{document}
