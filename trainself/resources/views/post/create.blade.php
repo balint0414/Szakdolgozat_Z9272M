@@ -1,5 +1,16 @@
 @extends('layouts.main')
 
+@push('scripts')
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+@endpush
+
 @section('content')
 <div class="row">
     <div class="col-lg-6 col-md-10 mx-auto">
@@ -39,7 +50,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="content">{{__('Tartalom')}}</label>
-                        <textarea class="form-control {{ $errors->has('content') ? ' is-invalid' : '' }}" name="content">{{ old('content') }}</textarea>
+                        <textarea id="editor" class="form-control {{ $errors->has('content') ? ' is-invalid' : '' }}" name="content">{{ old('content') }}</textarea>
                         @if ($errors->has('content'))
                             <p class="invalid-feedback">Hibás tartalom</p>
                         @endif
