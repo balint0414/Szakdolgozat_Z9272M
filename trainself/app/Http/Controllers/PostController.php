@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Image;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Topic;
 use App\Models\User;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -33,21 +35,22 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $request->validate([
-            'title' => 'required|min:2|max:240',
-            'topic_id' => 'required|exists:topics,id',
-            'description' => 'required',
-            'content' => 'required',
-        ]);
 
         $user = User::first();
 
         $post = $user->posts()->create($request->except('_token'));
+
+        $image = $this->uploadImage($request);
+
+        if($image){
+            $post->cover = $image->basename;
+            $post->save();
+        }
 
         return redirect()->route('post.details', $post)->with('success', __('Sikeres volt a poszt feltöltése!'));
     }
@@ -77,11 +80,11 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\PostRequest  $request
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
         //
     }
@@ -95,5 +98,16 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    private function uploadImage(Request $request)
+    {
+        $file = $request->file('cover');
+
+        $fileName = uniqid();
+
+        $cover = Image::make($file)->save(public_path("upload/posts/{$fileName}.{$file->extension()}"));
+
+        return $cover;
     }
 }
