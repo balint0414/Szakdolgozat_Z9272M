@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Image;
+//use Nette\Utils\Image;
+use Auth;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Topic;
 use App\Models\User;
 use App\Http\Requests\PostRequest;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -41,7 +44,7 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
 
-        $user = User::first();
+        $user = Auth::user();
 
         $post = $user->posts()->create($request->except('_token'));
 
@@ -74,7 +77,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $topics = Topic::orderBy('title')->get();
+        return view('post.edit')->with(compact('post', 'topics'));
     }
 
     /**
@@ -86,7 +90,16 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        //
+        $post->update($request->except('_token'));
+
+        $image = $this->uploadImage($request);
+
+        if($image){
+            $post->cover = $image->basename;
+            $post->save();
+        }
+
+        return redirect()->route('post.edit', $post)->with('success', __('Sikeres poszt frissítés!'));
     }
 
     /**
@@ -104,10 +117,30 @@ class PostController extends Controller
     {
         $file = $request->file('cover');
 
+        if(!$file)
+        {
+            return;
+        }
+
         $fileName = uniqid();
 
         $cover = Image::make($file)->save(public_path("upload/posts/{$fileName}.{$file->extension()}"));
 
         return $cover;
+    }
+
+    public function comment(Post $post, Request $request)
+    {
+        $request->validate([
+            'comment' => 'required|min:5',
+        ]);
+
+        $comment = new Comment;
+        $comment->message = $request->comment;
+        $comment->user()->associate($request->user());
+
+        $post->comments()->save($comment);
+
+        return redirect()->route('post.details', $post)->with('success', 'Sikeres kommentelés!');
     }
 }
