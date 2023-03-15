@@ -17,7 +17,6 @@ class TopicsTableSeeder extends Seeder
     {
         Topic::create(['title'=>'Edzés cikkek', 'description'=>'Cikkek az edzéssel kapcsolatban']);
         Topic::create(['title'=>'Táplálkozás', 'description'=>'Cikkek a helyes táplálkozással kapcsolatban']);
-        Topic::create(['title'=>'Edzők', 'description'=>'Az oldalon elérhető edzők listája']);
         Topic::create(['title'=>'Edzőtermek', 'description'=>'Az oldalon elérhető edzőtermek listája']);
     }
 }

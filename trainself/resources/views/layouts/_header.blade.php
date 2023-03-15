@@ -17,7 +17,7 @@
                 aria-expanded="false" href="#">{{Auth::user()->name}}</a>
                 <ul class="dropdown-menu" aria-labbeled-by="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="#">{{__('Profil')}}</a>
+                    <a class="dropdown-item" href="{{route('profile.details', Auth::user())}}">{{__('Profil')}}</a>
                   </li>
                   <li>
                     <form method="POST" action="{{route('logout')}}">
@@ -41,8 +41,8 @@
       <nav class="nav d-flex justify-content-between">
         <a class="p-2 link-secondary" href="{{route('topic.show',1)}}">Edzés cikkek</a>
         <a class="p-2 link-secondary" href="{{route('topic.show',2)}}">Táplálkozás</a>
-        <a class="p-2 link-secondary" href="{{route('topic.show',3)}}">Edzők</a>
-        <a class="p-2 link-secondary" href="{{route('topic.show',4)}}">Edzőtermek</a>
+        <a class="p-2 link-secondary" href="{{route('edzok.show')}}">Edzők</a>
+        <a class="p-2 link-secondary" href="{{route('topic.show',3)}}">Edzőtermek</a>
       </nav>
     </div>
 </div>

@@ -12,6 +12,21 @@
                         <x-forms.input name="email" type="email" label="{{ __('Email cím')}}"/>
                         <x-forms.input name="password" type="password" label="{{ __('Jelszó')}}"/>
                         <x-forms.input name="password_confirmation" type="password" label="{{ __('Jelszó megerősítése')}}"/>
+                        <label for="role">{{__('Beosztás')}}</label>
+                        <select class="form-control mb-3 {{ $errors->has('role') ? ' is-invalid' : '' }}" name="role">
+                            <option value="">
+                                {{__('Kérlek válassz')}}
+                            </option>
+                            <option value="Edző" {{ old('role') == 'Edző' ? 'selected' : '' }}>
+                                {{__('Edző')}}
+                            </option>
+                            <option value="Tanítvány" {{ old('role') == 'Tanítvány' ? 'selected' : '' }}>
+                                {{__('Tanítvány')}}
+                            </option>
+                        </select>
+                        @if ($errors->has('role'))
+                            <p class="invalid-feedback">Nem választott beosztást!</p>
+                        @endif
                         <div class="d-grid">
                             <button class="btn btn-primary btn-lg" type="submit">
                                 {{ __('Regisztráció')}}

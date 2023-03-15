@@ -14,6 +14,7 @@
             <h5 class="display-5">
                 {{__('Hozzászólás')}}
             </h5>
+            @auth
             <form action="{{route('post.comment', $post)}}" method="POST">
                 @csrf
                 <div class="mb-3">
@@ -22,6 +23,14 @@
                 <div class="d-grid">
                     <button class="btn btn-primary">{{__('Kommentelés')}}</button>
                 </div>
+            @else
+                <div class="d-grid mb-3">
+                    <a class="btn btn-primary" href="{{route('login')}}">
+                        {{__('Kommenteléshez lépjen be!')}}
+                    </a>
+                </div>
+            @endif
+                
             </form>
 
             <div class="mt-5">

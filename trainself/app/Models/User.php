@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -45,5 +46,20 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class, 'author_id');
+    }
+
+    public function getHasAvatarAttribute()
+    {
+        return $this->avatar != null;
+    }
+
+    public function getAvatarImageAttribute()
+    {
+        if($this->has_avatar)
+        {
+            return asset("upload/users/{$this->avatar}");
+        }
+        
+        return "https://via.placeholder.com/350";
     }
 }

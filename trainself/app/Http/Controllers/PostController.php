@@ -11,6 +11,7 @@ use App\Models\Topic;
 use App\Models\User;
 use App\Http\Requests\PostRequest;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class PostController extends Controller
 {
@@ -77,6 +78,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if(!Auth::user()->can('update',$post))
+        {
+            return abort(403);
+        }
+
         $topics = Topic::orderBy('title')->get();
         return view('post.edit')->with(compact('post', 'topics'));
     }

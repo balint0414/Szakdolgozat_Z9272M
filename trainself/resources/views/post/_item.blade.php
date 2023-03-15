@@ -11,6 +11,9 @@
                     {{ $post->description }}
                 </p>
                 <p class="text-end">
+                    @can('update', $post)
+                        <a class="btn btn-sm btn-secondary" href="{{route('post.edit',$post)}}">Szerkesztés</a>
+                    @endcan
                     <a class="btn btn-sm btn-primary" href="{{route('post.details', $post)}}">Olvass többet...</a>
                 </p>
             </div>
