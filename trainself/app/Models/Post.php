@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title','description','content','topic_id',
+        'title','description','content','topic_id','published',
     ];
 
     public function topic()

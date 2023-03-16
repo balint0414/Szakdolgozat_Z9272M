@@ -5,6 +5,7 @@
             <div class="ms-3">
                 <h4 class="display-4">{{ $post->title }}</h4>
                 <div class="mb-3">
+                    <img class="rounded-circle me-2" src="{{$post->author->avatar_image}}" alt="" width="25">
                     {{ $post->author->name }} | {{ $post->created_at->diffForHumans() }} | {{ $post->topic->title }}
                 </div>
                 <p class="fw-bold">

@@ -149,4 +149,36 @@ class PostController extends Controller
 
         return redirect()->route('post.details', $post)->with('success', 'Sikeres kommentelés!');
     }
+
+    public function decidePage()
+    {
+        if(Auth::user()->role=='admin')
+        {
+            $posts = Post::where('published', false)
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+            //return dd($posts);
+            return view('post.decide')->with(compact('posts'));
+        }
+        else
+        {
+            return abort(403);
+        }
+    }
+
+    public function publishedSetTrue($id)
+    {
+        if(Auth::user()->role=='admin')
+        {
+            $post = Post::findOrFail($id);
+            $post->published = true;
+            $post->save();
+
+            return redirect()->route('post.decide')->with('success', __('Sikeresen engedélyezte a posztot!'));
+        }
+        else
+        {
+            return abort(403);
+        }
+    }
 }

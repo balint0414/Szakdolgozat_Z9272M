@@ -11,7 +11,7 @@
                 <p><strong>{{ __('Kor') }}:</strong> {{ $user->age}}</p>
                 <p><strong>{{ __('Ország') }}:</strong> {{ $user->country }}</p>
                 <p><strong>{{ __('Város') }}:</strong> {{ $user->city }}</p>
-                <p><strong>{{__('A leírás elolvasására a prfilra kattintva van lehetőség.')}}</p>
+                <p><strong>{{__('A leírás elolvasására a profilra kattintva van lehetőség.')}}</p>
             </div>
         </div>
     </div>

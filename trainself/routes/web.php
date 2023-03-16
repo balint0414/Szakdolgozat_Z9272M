@@ -34,6 +34,11 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/profile/{user}', [Controllers\ProfileController::class, 'show'])->name('profile.details');
     Route::get('/profile/{user}/edit', [Controllers\ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profiles/{user}', [Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('/tanitvanyok', [Controllers\ProfileController::class, 'showTanitvany'])->name('tanitvanyok.show');
+
+    Route::get('/decide', [Controllers\PostController::class, 'decidePage'])->name('post.decide');
+    Route::post('/post/{id}/set-bool', [Controllers\PostController::class, 'publishedSetTrue'])->name('post.accept');
 });
 
 //próba

@@ -38,6 +38,13 @@ class ProfileController extends Controller
         return view('profile.profilesEdzok', ['users' => $users]);
     }
 
+    public function showTanitvany()
+    {
+        $users = User::where('role', 'Tanítvány')->get();
+
+        return view('profile.profilesTanitvanyok', ['users' => $users]);
+    }
+
     /**
      * Update the user's profile information.
      */

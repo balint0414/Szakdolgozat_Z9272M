@@ -53,7 +53,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->id == $post->author->id;
+        return $user->id == $post->author->id || $user->role=="admin";
     }
 
     /**

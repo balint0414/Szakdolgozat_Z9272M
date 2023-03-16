@@ -9,7 +9,10 @@ class TopicController extends Controller
 {
     public function show(Topic $topic)
     {
-        $posts = $topic->posts()->orderBy('created_at', 'desc')->paginate(5);
+        $posts = $topic->posts()
+        ->orderBy('created_at', 'desc')
+        ->where('published', true)
+        ->paginate(5);
 
         return view('topic.show')->with(compact('topic', 'posts'));
     }

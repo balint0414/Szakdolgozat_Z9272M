@@ -4,6 +4,14 @@
     <h1 class="display-3">{{ $post->title }}</h1>
     <p>{{ $post->author->name }} | {{ $post->topic->title }} | {{ $post->created_at->diffForHumans()}}</p>
     <p class="fw-bold">{{ $post->description }}</p>
+    @auth
+    @if(Auth::user()->role == "admin" && $post->published == false)
+        <form method="POST" action="{{ route('post.accept', $post->id) }}">
+            @csrf
+            <button class="btn btn-primary mt-3 mb-3" type="submit">Engedélyezem a posztot</button>
+        </form>
+    @endif
+    @endauth
     <div>
         {!! $post->content !!}
     </div>
