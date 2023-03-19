@@ -16,6 +16,18 @@
         </div>
     </div>
     <p class="text-end">
+        @if(auth()->id() !== $user->id)
+            @php
+                $isFriend = auth()->user()->sentFriends->contains($user->id) || auth()->user()->receivedFriends->contains($user->id);
+            @endphp
+            @if(!$isFriend)
+                <form action="{{ route('friend.request') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="receiver_id" value="{{ $user->id }}">
+                    <button class="btn btn-primary mb-3" type="submit">{{__('Barátnak jelölöm')}}</button>
+                </form>
+            @endif
+        @endif
         <a class="btn btn-sm btn-primary me-3" href="{{route('profile.details', $user)}}">Tovább a profilra...</a>
     </p>
 </div>

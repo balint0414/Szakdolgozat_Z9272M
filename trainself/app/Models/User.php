@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use PhpParser\Node\Expr\FuncCall;
 
 class User extends Authenticatable
 {
@@ -62,4 +63,35 @@ class User extends Authenticatable
         
         return "https://via.placeholder.com/350";
     }
+
+    public function sentFriendRequests()
+    {
+        return $this->hasMany(FriendRequest::class, 'sender_id');
+    }
+
+    public function receivedFriendRequests()
+    {
+        return $this->hasMany(FriendRequest::class, 'receiver_id');
+    }
+
+    public function sentFriends()
+    {
+        return $this->belongsToMany(
+            User::class,
+            'friend_requests',
+            'sender_id',
+            'receiver_id'
+        )->wherePivot('is_accepted', true);
+    }
+
+    public function receivedFriends()
+    {
+        return $this->belongsToMany(
+            User::class,
+            'friend_requests',
+            'receiver_id',
+            'sender_id'
+        )->wherePivot('is_accepted', true);
+    }
+
 }

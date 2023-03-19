@@ -31,14 +31,22 @@ Route::middleware(['auth'])->group(function() {
 
     Route::post('/post/{post}/comment', [Controllers\PostController::class, 'comment'])->name('post.comment');
 
+    //profil
     Route::get('/profile/{user}', [Controllers\ProfileController::class, 'show'])->name('profile.details');
     Route::get('/profile/{user}/edit', [Controllers\ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profiles/{user}', [Controllers\ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/tanitvanyok', [Controllers\ProfileController::class, 'showTanitvany'])->name('tanitvanyok.show');
 
+    //publikálásra váró oldalak eldöntése
     Route::get('/decide', [Controllers\PostController::class, 'decidePage'])->name('post.decide');
     Route::post('/post/{id}/set-bool', [Controllers\PostController::class, 'publishedSetTrue'])->name('post.accept');
+
+    //barátnak jelölés
+    Route::post('/friend-request', [Controllers\FriendController::class, 'sendFriendRequest'])->name('friend.request');
+    Route::post('/friend-accept', [Controllers\FriendController::class, 'acceptFriendRequest'])->name('friend.accept');
+    Route::get('/show-requests', [Controllers\FriendController::class, 'showRequests'])->name('friend.show');
+    Route::get('/show_all_friends', [Controllers\FriendController::class, 'showFriends'])->name('friends.list');
 });
 
 //próba

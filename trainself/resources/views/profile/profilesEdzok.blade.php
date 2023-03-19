@@ -8,8 +8,10 @@
 
     <div class="row">
         <div class="col-md-8 col-lg-6 mx-auto">
-            @forelse ($users as $user) 
-                @include('profile._item')    
+            @forelse ($users as $user)
+                @if(Auth::user() != $user)
+                    @include('profile._item')  
+                @endif  
                 @empty
                     <div class="alert alert-warning">
                          {{__('Nincsen edző regisztrálva')}}

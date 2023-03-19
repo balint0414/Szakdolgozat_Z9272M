@@ -28,6 +28,9 @@
                     </li>
                   @endif
                   <li>
+                    <a class="dropdown-item" href="{{ route('friend.show') }}">{{__('Barátnak jelölések')}}</a>
+                  </li>
+                  <li>
                     <form method="POST" action="{{route('logout')}}">
                       @csrf
                       <button class="dropdown-item" type="submit">
@@ -52,6 +55,9 @@
         <a class="p-2 link-secondary" href="{{route('topic.show',3)}}">{{__('Edzőtermek')}}</a>
         <a class="p-2 link-secondary" href="{{route('edzok.show')}}">{{__('Edzők')}}</a>
         <a class="p-2 link-secondary" href="{{route('tanitvanyok.show')}}">{{__('Tanítványok')}}</a>
+        @auth
+        <a class="p-2 link-secondary" href="{{route('friends.list')}}">{{__('Barátaim')}}</a>
+        @endauth
       </nav>
     </div>
 </div>
