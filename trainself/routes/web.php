@@ -47,6 +47,10 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/friend-accept', [Controllers\FriendController::class, 'acceptFriendRequest'])->name('friend.accept');
     Route::get('/show-requests', [Controllers\FriendController::class, 'showRequests'])->name('friend.show');
     Route::get('/show_all_friends', [Controllers\FriendController::class, 'showFriends'])->name('friends.list');
+
+    //keresés
+    Route::post('/search-edzo', [Controllers\ProfileController::class, 'searchResultsEdzo'])->name('edzo.search.results');
+    Route::post('/search-tanitvany', [Controllers\ProfileController::class, 'searchResultsTanitvany'])->name('tanitvany.search.results');
 });
 
 //próba

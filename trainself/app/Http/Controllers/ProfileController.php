@@ -19,9 +19,17 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        if(Auth::user() == $request->user())
+        {
+            return view('profile.edit', [
+                'user' => $request->user(),
+            ]);
+        }
+        else
+        {
+            return abort(403);
+        }
+        
     }
 
     public function show(User $user)
@@ -110,6 +118,40 @@ class ProfileController extends Controller
         $avatar = Image::make($file)->save(public_path("upload/users/{$fileName}.{$file->extension()}"));
 
         return $avatar;
+    }
+
+    public function searchResultsEdzo(Request $request)
+    {
+        $request->validate([
+            'search_type' => 'required',
+            'query' => 'required',
+        ]);
+
+        $searchType = $request->input('search_type');
+        $query = $request->input('query');
+
+        $users = User::where($searchType, 'LIKE', "%{$query}%")
+        ->where('role', 'LIKE', 'Edző')
+        ->get();
+
+        return view('profile.profilesEdzok', ['users' => $users]);
+    }
+
+    public function searchResultsTanitvany(Request $request)
+    {
+        $request->validate([
+            'search_type' => 'required',
+            'query' => 'required',
+        ]);
+
+        $searchType = $request->input('search_type');
+        $query = $request->input('query');
+
+        $users = User::where($searchType, 'LIKE', "%{$query}%")
+        ->where('role', 'LIKE', 'Tanítvány')
+        ->get();
+
+        return view('profile.profilesTanitvanyok', ['users' => $users]);
     }
 
 }

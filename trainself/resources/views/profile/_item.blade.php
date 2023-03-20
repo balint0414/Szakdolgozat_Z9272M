@@ -15,8 +15,8 @@
             </div>
         </div>
     </div>
-    <p class="text-end">
-        @if(auth()->id() !== $user->id)
+    <div class="d-flex justify-content-end">
+        @if(auth()->check() && auth()->id() !== $user->id)
             @php
                 $isFriend = auth()->user()->sentFriends->contains($user->id) || auth()->user()->receivedFriends->contains($user->id);
             @endphp
@@ -24,10 +24,10 @@
                 <form action="{{ route('friend.request') }}" method="POST">
                     @csrf
                     <input type="hidden" name="receiver_id" value="{{ $user->id }}">
-                    <button class="btn btn-primary mb-3" type="submit">{{__('Barátnak jelölöm')}}</button>
+                    <button class="btn btn-secondary mb-3 me-2" type="submit">{{__('Barátnak jelölöm')}}</button>
                 </form>
             @endif
         @endif
-        <a class="btn btn-sm btn-primary me-3" href="{{route('profile.details', $user)}}">Tovább a profilra...</a>
-    </p>
+        <a class="btn btn-sm btn-primary mb-3 me-3" href="{{route('profile.details', $user)}}">{{__('Tovább a profilra...')}}</a>
+    </div>
 </div>

@@ -4,7 +4,9 @@
 <div class="container">
     <div class="d-flex align-items-center mb-3">
         <h1 class="display-3 mb-5">{{ $user->name }} profilja</h1>
+        @if(Auth::user() == $user)
         <a class="ms-auto btn btn-primary" href="{{route('profile.edit', $user)}}">Szerkesztés</a>
+        @endif
     </div>
 
     <div class="row">
