@@ -39,7 +39,7 @@
             </div>
           @else
             <a class="btn btn-sm btn-dark" href="{{route('register')}}">{{__('Regisztráció')}}</a>
-            <a class="btn btn-sm btn-outline-secondary ms-3" href="{{route('login')}}">{{__('Bejelentkezés')}}</a>
+            <a class="btn btn-sm ms-3 btn-dark" href="{{route('login')}}">{{__('Bejelentkezés')}}</a>
           @endauth
         </div>
       </div>
@@ -53,7 +53,9 @@
         <a class="p-2 link-secondary" href="{{route('edzok.show')}}">{{__('Edzők')}}</a>
         <a class="p-2 link-secondary" href="{{route('tanitvanyok.show')}}">{{__('Tanítványok')}}</a>
         @auth
-        <a class="p-2 link-secondary" href="{{route('friends.list')}}">{{__('Barátaim')}}</a>
+        @if(Auth::user()->role != "admin")
+          <a class="p-2 link-secondary" href="{{route('friends.list')}}">{{__('Barátaim')}}</a>
+        @endif
         @endauth
       </nav>
     </div>
