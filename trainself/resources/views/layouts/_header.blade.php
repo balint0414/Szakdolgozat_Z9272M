@@ -28,6 +28,9 @@
                     <a class="dropdown-item" href="{{ route('friend.show') }}">{{__('Barátnak jelölések')}}</a>
                   </li>
                   <li>
+                    <a class="dropdown-item" href="{{ route('messages.index') }}">{{__('Üzenetek')}}</a>
+                  </li>
+                  <li>
                     <form method="POST" action="{{route('logout')}}">
                       @csrf
                       <button class="dropdown-item" type="submit">

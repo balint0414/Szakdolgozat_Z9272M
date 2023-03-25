@@ -4,19 +4,35 @@
 <div class="container">
     <div class="d-flex align-items-center mb-3">
         <h1 class="display-3 mb-5">{{ $user->name }} profilja</h1>
+        @if(Auth::user() != $user)
+        <a href="{{ route('messages.create', ['recipient_id' => $user->id]) }}" class="ms-auto btn btn-primary">{{__('Üzenet küldés')}}</a>
+        @endif
         @if(Auth::user() == $user)
         <a class="ms-auto btn btn-primary" href="{{route('profile.edit', $user)}}">Szerkesztés</a>
         @endif
     </div>
 
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-8 offset-md-2">
             <div class="card mb-3">
                 <div class="card-header">{{ __('Profil') }}</div>
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="me-3">
-                            <img width="150" height="150" src="{{ $user->avatar_image }}" alt="{{ $user->name }}" style="object-fit: cover">
+                            <img class="mb-5" width="150" height="150" src="{{ $user->avatar_image }}" alt="{{ $user->name }}" style="object-fit: cover">
+                            @if(auth()->check() && auth()->id() !== $user->id)
+                                @php
+                                    $isFriend = Auth::user()->sentFriends->contains($user->id) || Auth::user()->receivedFriends->contains($user->id);
+                                    $requestSent = Auth::user()->sentFriendRequests->contains('receiver_id', $user->id);
+                                @endphp
+                                @if(!$isFriend && !$requestSent)
+                                    <form action="{{ route('friend.request') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="receiver_id" value="{{ $user->id }}">
+                                        <button class="btn btn-primary mb-3" type="submit">{{__('Barátnak jelölöm')}}</button>
+                                    </form>
+                                @endif
+                            @endif
                         </div>
                         <div class="ms-3">
                             <p><strong>{{ __('Név') }}:</strong> {{ $user->name }}</p>
@@ -31,5 +47,24 @@
             </div>
         </div>
     </div>
+
+    @if(Auth::user() == $user)
+        <h1 class="mb-5">{{__('Publikációim:')}}</h1>
+    @else
+        <h1 class="mb-5">{{__('Publikáció:')}}</h1>
+    @endif
+
+    <div class="row">
+        <div class="col-md-8 col-lg-6 mx-auto">
+            @forelse ($posts as $post) 
+                @include('post._item')    
+                @empty
+                    <div class="alert alert-warning">
+                         {{__('Nincsen még poszt feltöltve!')}}
+                    </div>
+            @endforelse
+        </div>
+    </div>
+
 </div>
 @endsection

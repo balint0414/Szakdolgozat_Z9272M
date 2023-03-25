@@ -1,5 +1,16 @@
 @extends('layouts.main')
 
+@push('scripts')
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+@endpush
+
 @section('content')
 
 <div class="container">
@@ -88,7 +99,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Leírás') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" class="mb-3 form-control @error('description') is-invalid @enderror" name="description" autocomplete="description">{{ old('description', $user->description) }}</textarea>
+                                <textarea id="editor" class="mb-3 form-control @error('description') is-invalid @enderror" name="description" autocomplete="description">{{ old('description', $user->description) }}</textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">

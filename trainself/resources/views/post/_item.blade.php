@@ -12,10 +12,16 @@
                     {{ $post->description }}
                 </p>
                 <p class="text-end">
-                    @can('update', $post)
-                        <a class="btn btn-sm btn-secondary" href="{{route('post.edit',$post)}}">Szerkesztés</a>
-                    @endcan
-                    <a class="btn btn-sm btn-primary" href="{{route('post.details', $post)}}">Olvass többet...</a>
+                    <div class="d-flex justify-content-end">
+                        @can('update', $post)
+                            <form method="POST" action="{{ route('post.delete', $post) }}" class="mr-2">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-danger">{{__('Törlés')}}</button>
+                            </form>
+                            <a class="btn btn-sm btn-secondary mr-2 ms-2" href="{{route('post.edit',$post)}}">{{__('Szerkesztés')}}</a>
+                        @endcan
+                        <a class="btn btn-sm btn-primary ms-2" href="{{route('post.details', $post)}}">{{__('Olvass többet...')}}</a>
+                    </div>  
                 </p>
             </div>
         </div>

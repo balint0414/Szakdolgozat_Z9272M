@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Models\Post;
 use App\Models\FriendRequest;
 use Image;
 
@@ -34,10 +35,15 @@ class ProfileController extends Controller
 
     public function show(User $user)
     {
+        $posts = Post::orderBy('created_at', 'desc')
+        ->where('published', true)
+        ->where('author_id', $user->id)
+        ->paginate(5);
+
         return view('profile.show',[
             'user' => $user,
             'profile' => $user->profile,
-        ])->with(compact('user'));
+        ])->with(compact('user', 'posts'));
     }
 
     public function showEdzo()

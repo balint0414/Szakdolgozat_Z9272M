@@ -23,11 +23,13 @@ Route::get('/', [Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::middleware(['auth'])->group(function() {
+    //poszt
     Route::get('/publish',[Controllers\PostController::class, 'create'])->name('post.create');
     Route::post('/publish',[Controllers\PostController::class, 'store']);
 
     Route::get('/post/{post}/edit', [Controllers\PostController::class, 'edit'])->name('post.edit');
     Route::post('/post/{post}/edit', [Controllers\PostController::class, 'update']);
+    Route::post('/post/{post}/delete', [Controllers\PostController::class, 'destroy'])->name('post.delete');
 
     Route::post('/post/{post}/comment', [Controllers\PostController::class, 'comment'])->name('post.comment');
 
@@ -47,10 +49,24 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/friend-accept', [Controllers\FriendController::class, 'acceptFriendRequest'])->name('friend.accept');
     Route::get('/show-requests', [Controllers\FriendController::class, 'showRequests'])->name('friend.show');
     Route::get('/show_all_friends', [Controllers\FriendController::class, 'showFriends'])->name('friends.list');
+    Route::post('/friends/{friend}/remove', [Controllers\FriendController::class, 'removeFriend'])->name('friend.remove');
 
     //keresés
     Route::post('/search-edzo', [Controllers\ProfileController::class, 'searchResultsEdzo'])->name('edzo.search.results');
     Route::post('/search-tanitvany', [Controllers\ProfileController::class, 'searchResultsTanitvany'])->name('tanitvany.search.results');
+
+    //üzenetek
+    
+    Route::get('/messages', [Controllers\MessageController::class, 'index'])->name('messages.index');
+    Route::get('/messages-create', [Controllers\MessageController::class, 'create'])->name('messages.create');
+    Route::get('/messages/{message}', [Controllers\MessageController::class, 'show'])->name('messages.show');
+    Route::post('/messages', [Controllers\MessageController::class, 'store'])->name('messages.store');
+    Route::post('/messages/{message}/delete', [Controllers\MessageController::class, 'destroy'])->name('messages.delete');
+    
+    //Route::resource('messages', Controllers\MessageController::class)->only(['index', 'create', 'store', 'show']);
+
+    Route::get('/messages-sent', [Controllers\MessageController::class, 'sent'])->name('messages.sent');
+    Route::get('/messages-received', [Controllers\MessageController::class, 'received'])->name('messages.received');
 });
 
 //próba

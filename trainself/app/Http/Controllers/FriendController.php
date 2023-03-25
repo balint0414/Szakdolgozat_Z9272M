@@ -42,14 +42,26 @@ class FriendController extends Controller
 
     public function showFriends()
     {
+        $totalFriendRequests = FriendRequest::count();
+
+        if ($totalFriendRequests == 0) 
+        {
+            $friends = [];
+            return view('friend.friends')->with(compact('friends'));
+        }
+
         $sentFriends= Auth::user()->sentFriends;
         $receivedFriends = Auth::user()->receivedFriends;
         $friends = $sentFriends->merge($receivedFriends);
 
-        if ($friends->isEmpty()) {
-            return view('friend.friends')->with('message', 'Nincs még egy barátod sem.');
-        }
-
         return view('friend.friends')->with(compact('friends'));
+    }
+
+    public function removeFriend(Request $request, User $friend)
+    {
+        $user = Auth::user();
+        $user->removeFriend($friend);
+
+        return view('friend.friends')->with('message', 'Friend removed successfully.');
     }
 }

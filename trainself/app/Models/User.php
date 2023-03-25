@@ -19,10 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
+        'name', 'email', 'password', 'role',
     ];
 
     /**
@@ -31,8 +28,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
     ];
 
     /**
@@ -92,6 +88,30 @@ class User extends Authenticatable
             'receiver_id',
             'sender_id'
         )->wherePivot('is_accepted', true);
+    }
+
+    public function messagesSent()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    /*
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, 'friend_requests', 'sender_id', 'receiver_id')
+            ->select('users.id', 'users.name')
+            ->wherePivot('is_accepted', true)
+            ->orWhere(function ($query) {
+                $query->where('receiver_id', $this->id)
+                    ->where('is_accepted', true);
+            });
+    }
+    */
+
+    public function removeFriend(User $friend)
+    {
+        $this->sentFriends()->detach($friend->id);
+        $this->receivedFriends()->detach($friend->id);
     }
 
 }

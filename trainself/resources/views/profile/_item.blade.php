@@ -18,13 +18,14 @@
     <div class="d-flex justify-content-end">
         @if(auth()->check() && auth()->id() !== $user->id)
             @php
-                $isFriend = auth()->user()->sentFriends->contains($user->id) || auth()->user()->receivedFriends->contains($user->id);
+                $isFriend = Auth::user()->sentFriends->contains($user->id) || Auth::user()->receivedFriends->contains($user->id);
+                $requestSent = Auth::user()->sentFriendRequests->contains('receiver_id', $user->id);
             @endphp
-            @if(!$isFriend)
+            @if(!$isFriend && !$requestSent)
                 <form action="{{ route('friend.request') }}" method="POST">
                     @csrf
                     <input type="hidden" name="receiver_id" value="{{ $user->id }}">
-                    <button class="btn btn-secondary mb-3 me-2" type="submit">{{__('Barátnak jelölöm')}}</button>
+                    <button class="btn btn-primary mb-3" type="submit">{{__('Barátnak jelölöm')}}</button>
                 </form>
             @endif
         @endif

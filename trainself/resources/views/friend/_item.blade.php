@@ -16,13 +16,15 @@
         </div>
     </div>
     <p class="text-end">
-        @if(auth()->id() !== $request->sender->id)
-            <form action="{{ route('friend.accept') }}" method="POST">
-                @csrf
-                <input type="hidden" name="sender_id" value="{{ $request->sender->id }}">
-                <button class="btn btn-primary mb-3" type="submit">{{__('Elfogadom')}}</button>
-            </form>
-        @endif
-        <a class="btn btn-sm btn-primary me-3" href="{{route('profile.details', $request->sender)}}">Tovább a profilra...</a>
+        <div class="d-flex justify-content-end">
+            @if(auth()->id() !== $request->sender->id)
+                <form action="{{ route('friend.accept') }}" method="POST" class="mr-2">
+                    @csrf
+                    <input type="hidden" name="sender_id" value="{{ $request->sender->id }}">
+                    <button class="btn btn-primary" type="submit">{{__('Elfogadom')}}</button>
+                </form>
+            @endif
+            <a class="btn btn-sm btn-primary me-3 mr-2 ms-2" href="{{route('profile.details', $request->sender)}}">{{__('Tovább a profilra...')}}</a>
+        </div>    
     </p>
 </div>

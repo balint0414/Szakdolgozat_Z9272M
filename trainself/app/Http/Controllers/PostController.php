@@ -116,7 +116,16 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if($post->author_id === Auth::user()->id || Auth::user()->role == 'admin')
+        {
+            $post->delete();
+
+            return redirect()->route('home')->with('success', 'Sikeresen törölted a posztot!');
+        }
+        else
+        {
+            return abort(403);
+        }
     }
 
     private function uploadImage(Request $request)
