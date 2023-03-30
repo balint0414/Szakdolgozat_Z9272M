@@ -6,6 +6,13 @@
 </h1>
 <p class="mb-5">{{ __('Ezen az oldalon jelenik meg az összes barátod!')}}</p>
 
+<form action="{{ route('friend.search') }}" method="GET" class="mb-5">
+    <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="Keresés név alapján..." value="{{ request('search') }}">
+        <button class="btn btn-primary" type="submit">{{__('Keresés')}}</button>
+    </div>
+</form>
+
 <div class="row">
     <div class="col-md-8 col-lg-6 mx-auto">
         @forelse ($friends as $friend) 

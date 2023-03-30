@@ -114,4 +114,15 @@ class User extends Authenticatable
         $this->receivedFriends()->detach($friend->id);
     }
 
+    //időpont foglalás
+    public function trainingSessions()
+    {
+        return $this->hasMany(TrainingSession::class, 'trainer_id');
+    }
+
+    public function bookedSessions()
+    {
+        return $this->hasMany(TrainingSession::class, 'student_id');
+    }
+
 }

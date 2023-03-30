@@ -30,6 +30,16 @@
                   <li>
                     <a class="dropdown-item" href="{{ route('messages.index') }}">{{__('Üzenetek')}}</a>
                   </li>
+                  @if(Auth::user()->role == "Edző")
+                    <li>
+                      <a class="dropdown-item" href="{{ route('booking.create') }}">{{ __('Időpont létrehozása') }}</a>
+                    </li>
+                  @endif
+                  @if(Auth::user()->role == "Edző" || Auth::user()->role == "Tanítvány")
+                    <li>
+                      <a class="dropdown-item" href="{{ route('booking.booked_sessions') }}">{{ __('Lefoglalt időpontjaim') }}</a>
+                    </li>
+                  @endif
                   <li>
                     <form method="POST" action="{{route('logout')}}">
                       @csrf

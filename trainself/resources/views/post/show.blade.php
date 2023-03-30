@@ -47,7 +47,8 @@
                     <div class="card-body">
                         <div class="mb-3 d-flex">
                             <div class="d-flex">
-                                {{$comment->user->name}} {{__('hozzászólása: ')}}
+                                <img class="rounded-circle me-2" src="{{$comment->user->avatar_image}}" alt="" width="25">
+                                <a href="{{route('profile.details', $comment->user)}}">{{$comment->user->name}}</a>:
                             </div>
                             <span class="ms-3">
                                 ({{$comment->created_at->diffForHumans()}})

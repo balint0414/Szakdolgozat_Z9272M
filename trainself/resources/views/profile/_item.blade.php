@@ -25,7 +25,7 @@
                 <form action="{{ route('friend.request') }}" method="POST">
                     @csrf
                     <input type="hidden" name="receiver_id" value="{{ $user->id }}">
-                    <button class="btn btn-primary mb-3" type="submit">{{__('Barátnak jelölöm')}}</button>
+                    <button class="btn btn-primary mb-3 me-3" type="submit">{{__('Barátnak jelölöm')}}</button>
                 </form>
             @endif
         @endif

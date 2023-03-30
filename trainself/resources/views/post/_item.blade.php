@@ -6,7 +6,7 @@
                 <h4 class="display-4">{{ $post->title }}</h4>
                 <div class="mb-3">
                     <img class="rounded-circle me-2" src="{{$post->author->avatar_image}}" alt="" width="25">
-                    {{ $post->author->name }} | {{ $post->created_at->diffForHumans() }} | {{ $post->topic->title }}
+                    <a href="{{route('profile.details', $post->author)}}">{{ $post->author->name }}</a> | {{ $post->created_at->diffForHumans() }} | {{ $post->topic->title }}
                 </div>
                 <p class="fw-bold">
                     {{ $post->description }}

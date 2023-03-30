@@ -62,6 +62,21 @@ class FriendController extends Controller
         $user = Auth::user();
         $user->removeFriend($friend);
 
-        return view('friend.friends')->with('message', 'Friend removed successfully.');
+        return redirect()->route('friend.show')->with('success', 'Barát sikeresen törölve!');
+    }
+
+    public function searchResultsFriend(Request $request)
+    {
+        $searchTerm = $request->input('search');
+    
+        $sentFriends = auth()->user()->sentFriends;
+        $receivedFriends = auth()->user()->receivedFriends;
+        $friends_before = $sentFriends->merge($receivedFriends);
+
+        $friends = $friends_before->filter(function ($friend) use ($searchTerm) {
+            return str_contains(strtolower($friend->name), strtolower($searchTerm));
+        });
+
+        return view('friend.friends')->with(compact('friends'));
     }
 }

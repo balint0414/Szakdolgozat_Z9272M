@@ -48,10 +48,15 @@
         </div>
     </div>
 
+    @if($user->role === 'Edző')
+        <h1 class="mb-3">{{__('Időpont foglalás:')}}</h1>
+        <a href="{{ route('booking.index', ['trainer_id' => $user->id]) }}" class="btn btn-primary mb-5">{{__('Az edző időpontjai')}}</a>
+    @endif
+
     @if(Auth::user() == $user)
         <h1 class="mb-5">{{__('Publikációim:')}}</h1>
     @else
-        <h1 class="mb-5">{{__('Publikáció:')}}</h1>
+        <h1 class="mb-5">{{__('Publikációi:')}}</h1>
     @endif
 
     <div class="row">

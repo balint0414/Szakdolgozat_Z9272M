@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TrainingBookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,7 @@ Route::middleware(['auth'])->group(function() {
     //keresés
     Route::post('/search-edzo', [Controllers\ProfileController::class, 'searchResultsEdzo'])->name('edzo.search.results');
     Route::post('/search-tanitvany', [Controllers\ProfileController::class, 'searchResultsTanitvany'])->name('tanitvany.search.results');
+    Route::get('/friends/search', [Controllers\FriendController::class, 'searchResultsFriend'])->name('friend.search');
 
     //üzenetek
     
@@ -67,6 +69,15 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/messages-sent', [Controllers\MessageController::class, 'sent'])->name('messages.sent');
     Route::get('/messages-received', [Controllers\MessageController::class, 'received'])->name('messages.received');
+
+    //foglalás
+    Route::get('/training_sessions', [Controllers\TrainingBookingController::class, 'index'])->name('booking.index');
+    Route::post('/training_sessions', [Controllers\TrainingBookingController::class, 'store'])->name('booking.store');
+    Route::post('/training_sessions/{session}/book', [Controllers\TrainingBookingController::class, 'booking'])->name('booking.book');
+    Route::get('/training_sessions/create', [Controllers\TrainingBookingController::class, 'create'])->name('booking.create');
+    Route::post('/training_sessions/{id}/delete', [Controllers\TrainingBookingController::class, 'destroy'])->name('booking.destroy');
+    Route::post('/training_sessions/{id}/setAvailable', [Controllers\TrainingBookingController::class, 'setAvailable'])->name('booking.setAvailable');
+    Route::get('/booked_sessions', [Controllers\TrainingBookingController::class, 'bookedSessions'])->name('booking.booked_sessions');
 });
 
 //próba
