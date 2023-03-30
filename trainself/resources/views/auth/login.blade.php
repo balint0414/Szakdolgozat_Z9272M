@@ -10,12 +10,7 @@
                         @csrf
                         <x-forms.input name="email" type="email" label="{{ __('Email cím')}}"/>
                         <x-forms.input name="password" type="password" label="{{ __('Jelszó')}}"/>
-                        <div class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" value="1" id="remember" name="remember">
-                            <label class="form-check-label" for="remember">
-                                {{__('Emlékezz rám')}}
-                            </label>
-                        </div>
+
                         <div class="d-grid">
                             <button class="btn btn-primary btn-lg" type="submit">
                                 {{ __('Bejelentkezés')}}
